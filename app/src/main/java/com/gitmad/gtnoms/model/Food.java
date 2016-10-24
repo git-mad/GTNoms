@@ -12,7 +12,7 @@ public class Food {
     @NonNull
     private State state;
 
-    enum State {
+    public enum State {
         VERIFIED,
         UNVERIFIED,
         OUT
