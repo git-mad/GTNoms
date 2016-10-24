@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class NetworkAPI {
     @NonNull
-    private List<DiningHallSection> northAvenue = Arrays.asList(
+    private static List<DiningHallSection> northAvenue = Arrays.asList(
             new DiningHallSection("Grill", Arrays.asList(
                     new Food("Chipotle Patty Melt", Food.State.VERIFIED),
                     new Food("Grilled Cheese with Tomatoes on Wheat", Food.State.VERIFIED),
@@ -27,14 +27,14 @@ public class NetworkAPI {
                     new Food("Sante Fe Black Bean", Food.State.VERIFIED),
                     new Food("Vegetable Egg roll", Food.State.VERIFIED),
                     new Food("Fresh Chinese (Napa) Cabbage", Food.State.VERIFIED),
-                    new Food("Farro with Sweet Corn (vegan)", Food.State.VERIFIED),
+                    new Food("Farro with Sweet Corn (vegan)", Food.State.VERIFIED)
             )),
             new DiningHallSection("Desert", Arrays.asList(
                     new Food("Peanut Butter Cookies", Food.State.VERIFIED),
                     new Food("Bourbon Street Bar with Snickers Pieces", Food.State.UNVERIFIED
             ))
     ));
-    
+
     @NonNull
     public static List<DiningHallSection> fetchData() {
         return northAvenue;
