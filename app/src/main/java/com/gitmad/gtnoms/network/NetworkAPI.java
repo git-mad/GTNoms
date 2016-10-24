@@ -10,7 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Stubs out API calls from the server
+ * Stubs out API calls from the server.
+ * Activities are going to use this class to retrieve information from the server.
+ * ... but right now we're just returning example data.
  */
 public class NetworkAPI {
     @NonNull
