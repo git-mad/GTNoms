@@ -1,4 +1,4 @@
-package com.gitmad.gtnoms;
+package com.gitmad.gtnoms.foodMenu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,14 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gitmad.gtnoms.dummy.DummyContent;
-import com.gitmad.gtnoms.dummy.DummyContent.DummyItem;
+import com.gitmad.gtnoms.R;
+import com.gitmad.gtnoms.model.Food;
 
 import java.util.List;
 
 /**
- * A fragment representing a list of Items.
- * <p/>
+ * A fragment representing a list of Items on a GUI
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
@@ -28,12 +27,17 @@ public class FoodItemFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private List<Food> foodList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public FoodItemFragment() {
+    }
+
+    public void setArguments(Bundle bundle) {
+        foodList = (List<Food>) bundle.getSerializable("FoodList");
     }
 
     // TODO: Customize parameter initialization
@@ -67,9 +71,9 @@ public class FoodItemFragment extends Fragment {
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+                recyclerView.setLayoutManager(new GridLayoutManager      (context, mColumnCount));
             }
-            recyclerView.setAdapter(new FoodItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new FoodItemRecyclerViewAdapter(foodList, mListener));
         }
         return view;
     }
@@ -104,6 +108,6 @@ public class FoodItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Food item);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ *  Represents a section of the dining hall with food
  */
 public class DiningHallSection {
     @NonNull

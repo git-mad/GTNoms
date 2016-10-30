@@ -1,4 +1,4 @@
-package com.gitmad.gtnoms;
+package com.gitmad.gtnoms.foodMenu;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,22 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.gitmad.gtnoms.ItemFragment.OnListFragmentInteractionListener;
-import com.gitmad.gtnoms.dummy.DummyContent.DummyItem;
+
+import com.gitmad.gtnoms.R;
+import com.gitmad.gtnoms.model.Food;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link Food} and makes a call to the
+ * specified .
  * TODO: Replace the implementation with code for your data type.
  */
 public class FoodItemRecyclerViewAdapter extends RecyclerView.Adapter<FoodItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final List<Food> mValues;
+    private final FoodItemFragment.OnListFragmentInteractionListener mListener;
 
-    public FoodItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public FoodItemRecyclerViewAdapter(List<Food> items, FoodItemFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,15 +30,15 @@ public class FoodItemRecyclerViewAdapter extends RecyclerView.Adapter<FoodItemRe
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+                .inflate(R.layout.fragment_fooditem, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getName());
+        holder.mContentView.setText(mValues.get(position).getState().toString());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class FoodItemRecyclerViewAdapter extends RecyclerView.Adapter<FoodItemRe
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Food mItem;
 
         public ViewHolder(View view) {
             super(view);
